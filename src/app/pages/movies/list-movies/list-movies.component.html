@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Code7</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <div class="nav-link">
+            <label for="">Gênero</label>
+            <select (change)="filterByGender(gender.value)" class="form-control" name="" id="" #gender>
+              <option value="all">- Nenhum -</option>
+              <option class="form-control" [value]="gender.value" *ngFor="let gender of genders">
+                {{ gender.displayName }}</option>
+            </select>
+          </div>
+        </li>
+        <li class="nav-item">
+          <div class="nav-link">
+            <label for="">Ano de Lançamento</label>
+            <select (change)="filterByYear(year.value)" class="form-control" name="" id="" #year>
+              <option value="all">- Nenhum -</option>
+              <option [value]="year.value" *ngFor="let year of years">
+                {{ year.displayName }}</option>
+            </select>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="m-5" *ngIf="(movies$ | async)?.length; else emptyMessage">
+    <h1 class="mb-3 text-center">Filmes</h1>
+    <div class="d-flex items-align-center justify-content-center">
+      <div *ngFor="let movie of (movies$ | async) as movies">
+        <div (click)="openModal(movie)" class="card mr-3">
+          <img [src]="movie.poster" [alt]="movie.nome">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #emptyMessage>
+    <div class="empty-message text-center">Nenhum filme disponível</div>
+  </ng-template>
+</div>

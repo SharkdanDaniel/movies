@@ -1,0 +1,27 @@
+<div class="modal-header">
+  <h1 class="modal-title">{{ movie.nome }}</h1>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body d-flex">
+  <img class="mr-3" [src]="movie.poster" [alt]="movie.nome">
+  <div class="description">
+    <div class="d-flex">
+      <h3 class="mr-2">Diretor:</h3>
+      <span>{{ movie.diretor  }}</span>
+    </div>
+    <div class="d-flex">
+      <h3 class="mr-2">Ano de lançamento:</h3>
+      <span>{{ movie.ano  }}</span>
+    </div>
+    <div class="d-flex">
+      <h3 class="mr-2">Gênero:</h3>
+      <span>{{ movie.diretor  }}</span>
+    </div>
+    <div class="">
+      <h3 class="mr-2">Descrição:</h3>
+      <span>{{ movie.descricao  }}</span>
+    </div>    
+  </div>
+</div>
